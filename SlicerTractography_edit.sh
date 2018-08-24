@@ -48,7 +48,6 @@ fi
 
 if [ ! -e $outputfolder/${stem}_MASK.nrrd ]; then
   DiffusionWeightedVolumeMasking \
-    --otsuomegathreshold 0.7 \
     --removeislands \
     ${outputfolder}/${stem}_QCed.nrrd \
     ${outputfolder}/${stem}_SCALAR.nrrd \
