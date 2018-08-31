@@ -92,7 +92,7 @@ mkdir -p $outputfolder/FiberMeasurements/$filename/$hemisphere/
 echo $outputfolder/FiberMeasurements/$filename/$hemisphere >> /scratch/saba/testing.txt; 
 FiberTractMeasurements \
   --outputfile $outputfolder/FiberMeasurements/$filename/$hemisphere/$filename'.csv' \
-  --inputdirectory $outputfolder/AppendClusters/'OutliersPerSubject_'$filename/$hemisphere \
+  --inputdirectory $outputfolder/AppendClusters/$filename/$hemisphere \
   -i Fibers_File_Folder \
   --separator Tab \
   -f Column_Hierarchy
