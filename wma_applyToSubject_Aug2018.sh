@@ -61,24 +61,24 @@ else
   echo "wm_cluster_remove_outliers.py was already run on this subject!"
 fi
 
-if [ ! -e $outputfolder/ClusterByHemisphere/'OutliersPerSubject_'$filename ]; then
+if [ ! -e $outputfolder/ClusterByHemisphere/$filename ]; then
 wm_separate_clusters_by_hemisphere.py \
   -atlasMRML $clusteredmrml \
   $outputfolder/OutliersPerSubject/$filename'_reg_outlier_removed'/ \
-  $outputfolder/ClusterByHemisphere/'OutliersPerSubject_'$filename
+  $outputfolder/ClusterByHemisphere/$filename
 else 
   echo "wm_separate_clusters_by_hemisphere.py was already run on this subject!"
 fi
 
-if [ ! -e $outputfolder/AppendClusters/'OutliersPerSubject_'$filename ]; then
+if [ ! -e $outputfolder/AppendClusters/$filename ]; then
 for hemisphere in "${listHemispheres[@]}"; do
 echo $hemisphere
 while read tractname; do 
 wm_append_clusters.py \
   -appendedTractName $tractname \
   -tractMRML $atlasDirectory/$tractname'.mrml' \
-  $outputfolder/ClusterByHemisphere/'OutliersPerSubject_'$filename/$hemisphere \
-  $outputfolder/AppendClusters/'OutliersPerSubject_'$filename/$hemisphere >> /scratch/saba/log_wma.txt
+  $outputfolder/ClusterByHemisphere/$filename/$hemisphere \
+  $outputfolder/AppendClusters/$filename/$hemisphere >> /scratch/saba/log_wma.txt
 done < $tractsfile
 done
 else
