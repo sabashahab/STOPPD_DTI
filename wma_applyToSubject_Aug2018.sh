@@ -51,12 +51,12 @@ else
   echo "wm_cluster_from_atlas_new.py was already run on this subject!"
 fi
 
-if [ ! -e $outputfolder/OutliersPerSubject1/$filename'_reg_outlier_removed' ]; then
+if [ ! -e $outputfolder/OutliersPerSubject/$filename'_reg_outlier_removed' ]; then
 wm_cluster_remove_outliers.py \
   -cluster_outlier_std 4 \
   $outputfolder/ClusterFromAtlas/$filename'_reg' \
   $atlasDirectory \
-  $outputfolder/OutliersPerSubject1
+  $outputfolder/OutliersPerSubject
 else 
   echo "wm_cluster_remove_outliers.py was already run on this subject!"
 fi
@@ -64,7 +64,7 @@ fi
 if [ ! -e $outputfolder/ClusterByHemisphere/'OutliersPerSubject_'$filename ]; then
 wm_separate_clusters_by_hemisphere.py \
   -atlasMRML $clusteredmrml \
-  $outputfolder/OutliersPerSubject1/$filename'_reg_outlier_removed'/ \
+  $outputfolder/OutliersPerSubject/$filename'_reg_outlier_removed'/ \
   $outputfolder/ClusterByHemisphere/'OutliersPerSubject_'$filename
 else 
   echo "wm_separate_clusters_by_hemisphere.py was already run on this subject!"
